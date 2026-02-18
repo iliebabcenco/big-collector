@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/big}
+    username: ${DB_USER:big_user}
+    password: ${DB_PASSWORD:big_password}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 600000
+      connection-timeout: 30000
+      pool-name: CollectorHikariCP
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    enabled: false
+  threads:
+    virtual:
+      enabled: true
+
+logging:
+  level:
+    org.springframework: INFO
+    org.big.bigcollector: DEBUG
