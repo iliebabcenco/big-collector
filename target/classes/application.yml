@@ -27,6 +27,17 @@ spring:
     virtual:
       enabled: true
 
+github:
+  token: ${GITHUB_TOKEN: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}
+
+collector:
+  reddit:
+    user-agent: "BIG-Collector/1.0 (business idea research)"
+  defaults:
+    connect-timeout-ms: 10000
+    read-timeout-ms: 30000
+    max-items-per-target: 100
+
 logging:
   level:
     org.springframework: INFO
