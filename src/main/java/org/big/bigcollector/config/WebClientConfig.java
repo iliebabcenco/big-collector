@@ -15,6 +15,9 @@ public class WebClientConfig {
     @Value("${github.token:}")
     private String githubToken;
 
+    @Value("${producthunt.token:}")
+    private String productHuntToken;
+
     @Value("${collector.reddit.user-agent:BIG-Collector/1.0}")
     private String redditUserAgent;
 
@@ -47,5 +50,26 @@ public class WebClientConfig {
                 .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.USER_AGENT, redditUserAgent)
                 .build();
+    }
+
+    @Bean("appleRssWebClient")
+    public WebClient appleRssWebClient(WebClient.Builder builder) {
+        return builder
+                .baseUrl("https://itunes.apple.com")
+                .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+                .build();
+    }
+
+    @Bean("productHuntWebClient")
+    public WebClient productHuntWebClient(WebClient.Builder builder) {
+        WebClient.Builder b = builder
+                .baseUrl("https://api.producthunt.com")
+                .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
+
+        if (productHuntToken != null && !productHuntToken.isBlank()) {
+            b.defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + productHuntToken);
+        }
+
+        return b.build();
     }
 }

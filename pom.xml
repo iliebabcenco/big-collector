@@ -69,6 +69,13 @@
             <version>1.17.2</version>
         </dependency>
 
+        <!-- Anthropic Java SDK for LLM Brainstorm -->
+        <dependency>
+            <groupId>com.anthropic</groupId>
+            <artifactId>anthropic-java</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

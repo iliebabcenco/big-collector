@@ -38,6 +38,12 @@ collector:
     read-timeout-ms: 30000
     max-items-per-target: 100
 
+producthunt:
+  token: ${PRODUCTHUNT_TOKEN:}
+
+anthropic:
+  api-key: ${ANTHROPIC_API_KEY:}
+
 logging:
   level:
     org.springframework: INFO
