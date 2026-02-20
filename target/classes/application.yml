@@ -44,6 +44,9 @@ producthunt:
 anthropic:
   api-key: ${ANTHROPIC_API_KEY:}
 
+openai:
+  api-key: ${OPENAI_API_KEY:}
+
 logging:
   level:
     org.springframework: INFO
